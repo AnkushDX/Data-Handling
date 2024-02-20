@@ -1,0 +1,43 @@
+.main{
+    margin-top: 35px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.head{
+    color: rgb(0, 1, 1);
+}
+.thborder{
+    color: rgb(0, 1, 1);
+}
+.searchBar{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 30%;
+}
+.sTitle{
+    padding: 2px;
+    margin-left: 10px;
+    outline: none;
+}
+.selecteid{
+    padding: 3px;
+    margin-left: 10px;
+    outline: none; 
+}
+.noData{
+    color: red;
+    text-align: center;
+}
+.pageSearch{
+margin-left: -100px;
+margin-right: 10px;
+margin-top: 30px;
+font-weight: 500;
+}
+.allData{
+    margin-left: 10px;
+margin-right: 10px;
+font-weight: 500;
+
+}
