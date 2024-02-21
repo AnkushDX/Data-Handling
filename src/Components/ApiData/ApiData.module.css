@@ -13,7 +13,7 @@
 .searchBar{
     margin-top: 30px;
     margin-bottom: 20px;
-    margin-left: 30%;
+    margin-left: 21%;
 }
 .sTitle{
     padding: 2px;
@@ -29,15 +29,6 @@
     color: red;
     text-align: center;
 }
-.pageSearch{
-margin-left: -100px;
-margin-right: 10px;
-margin-top: 30px;
-font-weight: 500;
-}
-.allData{
-    margin-left: 10px;
-margin-right: 10px;
-font-weight: 500;
-
+.exportBtn{
+ margin-left: 50%;
 }
