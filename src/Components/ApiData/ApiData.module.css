@@ -9,6 +9,7 @@
 }
 .thborder{
     color: rgb(0, 1, 1);
+   
 }
 .searchBar{
     margin-top: 30px;
@@ -31,4 +32,8 @@
 }
 .exportBtn{
  margin-left: 50%;
+}
+.titleBar{
+    text-decoration: none;
+    color: black;
 }

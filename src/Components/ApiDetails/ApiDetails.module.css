@@ -1,0 +1,45 @@
+.main{
+    align-items: center !important;
+    justify-content: center !important;
+    display: flex !important;
+}
+.titleCard{
+    margin-top: 70px;
+    width: 50%;
+    height: 470px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.head{
+    margin-top: 30px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-weight: 650;
+    color: rgba(128, 128, 128, 0.729);
+
+}
+
+.titleHead{
+    color: rgba(104, 103, 103, 0.729);
+    font-size: 20px;
+    margin-left: 30px;
+    letter-spacing: 1.5px;
+
+}
+.username{
+    color: rgba(128, 128, 128, 0.919);
+    text-align: center;
+    font-size: 20px;
+}
+.titleText{
+    color: rgba(128, 128, 128, 0.919);
+    /* font-size: 20px; */
+    margin-left: 30px;
+    /* margin-top: 10px; */
+    text-transform: capitalize;
+}
+.backBtn{
+    margin-top: 10px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}

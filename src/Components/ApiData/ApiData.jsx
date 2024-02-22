@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Style from "../ApiData/ApiData.module.css";
+import { ToastContainer, toast,Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {Link} from "react-router-dom"
 import axios from "axios";
 import * as XLSX from "xlsx";
+
+
 
 const ApiData = () => {
   const [originalData, setOriginalData] = useState([]);
@@ -14,6 +19,7 @@ const ApiData = () => {
   const [perPage, setPerpage] = useState(10);
   const [currentPage, setcurrentPage] = useState(1);
   const [searchPage, setSearchPage] = useState("");
+  
 
   const shouldShowpagination = myData.length > perPage && !noData;
 
@@ -29,6 +35,15 @@ const ApiData = () => {
   //..............Function Export Post Data to Excel.........////
 
   const exportToExcel = () => {
+    
+    if (noData){
+      toast.error("Data Not Found",{
+        position:"top-center",
+        transition: Slide,
+        autoClose:1500
+      })
+      return;
+    }
     const worksheet = XLSX.utils.json_to_sheet(myData);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Post");
@@ -38,37 +53,32 @@ const ApiData = () => {
 
     let searchQuery = "";
     if (searchUserId) {
-      searchQuery += `UserId-${searchUserId}`;
+      searchQuery += `UserId ${searchUserId}`;
     }
     if (searchTitle) {
       if (searchQuery !== "") {
         searchQuery += " ";
       }
-      searchQuery += `Title-${searchTitle}`;
+      searchQuery += `Title ${searchTitle}`;
     }
 
     const currentDate = new Date();
-    const dateFormatter = new Intl.DateTimeFormat("en-IN", {
-      timeZone: "Asia/Kolkata",
-      timeZoneName: "short",
-      weekday: "long",
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-    const [{ value: day }, ,{ value: month }, ,{ value: year }, ,{ value: hour }, ,{ value: minute }, ,{ value: timeZone }, ,{ value: hour12 }, ] = dateFormatter.formatToParts(currentDate);
-    const formattedTime = `${hour}:(${minute} ${timeZone} ${hour12})`.replace('_',':');
-    const formattedDate = `${day} ${month} ${year} ${formattedTime}`;
-    const fileName = `Post-${searchQuery} ${formattedDate}.xlsx`;
+    const fileName = `Post ${searchQuery} ${currentDate}.xlsx`;
 
     XLSX.writeFile(workbook, fileName);
   };
 
   //..............Function Export Pagination Data to Excel.........////
+
   const PaginateDataToExcel = () => {
+    if (noData){
+      toast.error("Data Not Found",{
+        position:"top-center",
+        transition: Slide,
+        autoClose:1500
+      })
+      return;
+    }
     const worksheet = XLSX.utils.json_to_sheet(currentpostPage);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "PaginationData");
@@ -87,21 +97,12 @@ const ApiData = () => {
       searchQuery += `Title-${searchTitle}`;
     }
 
+   const paginationStart = (currentPage -1) *perPage +1;
+   const paginationEnd = Math.min(currentPage * perPage, myData.length);
+   const paginationRange= `${paginationStart} -${paginationEnd}`;
+
     const currentDate = new Date();
-    const dateFormatter = new Intl.DateTimeFormat("en-IN", {
-      timeZone: "Asia/Kolkata",
-      timeZoneName: "short",
-      weekday: "long",
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-    const [{ value: day }, ,{ value: month }, ,{ value: year }, , { value: hour }, ,{ value: minute }, ,{ value: timeZone }, ,{ value: hour12 },] = dateFormatter.formatToParts(currentDate);
-    const formattedDate = `${day} ${month} ${year} ${hour}:(${minute}:${timeZone} ${hour12})`;
-    const fileName = `PaginateData ${searchQuery} ${formattedDate}.xlsx`;
+    const fileName = `Paginate ${searchQuery} ${paginationRange} ${currentDate}.xlsx`;
 
     XLSX.writeFile(workbook, fileName);
   };
@@ -111,14 +112,19 @@ const ApiData = () => {
   const indexLast = currentPage * perPage;
   const indeFpage = indexLast - perPage;
   const currentpostPage = myData.slice(indeFpage, indexLast);
+console.log("clicked Page Number",currentPage)
 
   const PageNumber = [];
   for (var i = 1; i <= Math.ceil(myData.length / perPage); i++) {
     PageNumber.push(i);
   }
   const PageShow = (num) => {
+    // console.log('Clicked page Number',num)
     setcurrentPage(num);
+    
   };
+
+
   //..............Function Export Search Data to Excel.........////
 
   // ......................NextPage..................................
@@ -259,6 +265,7 @@ const ApiData = () => {
           </button>
           <br />
         </div>
+        <ToastContainer/>
         <div>
           <button
             className={`btn btn-sm btn-primary  ${Style.exportBtn}`}
@@ -300,7 +307,10 @@ const ApiData = () => {
                       <tr key={id}>
                         <th className={Style.thborder}>{id}</th>
                         <td className={Style.thborder}>{userId}</td>
-                        <td className={Style.thborder}>{title}</td>
+                        <td className={Style.thborder}>
+                        {/* <Link to= {`/post/${post.userId}`} className={Style.titleBar} state={{userId:post.userId,title:post.title,body:post.body ,}}>{title}</Link> */}
+                        <Link to ={{pathname : `/post/${post.userId}`,state:{currentPage:currentPage}}} className={Style.titleBar} state ={{userId:post.userId,title:post.title,body:post.body}}>{title}</Link>
+                        </td>
                         <td className={Style.thborder}>{body}</td>
                       </tr>
                     );
