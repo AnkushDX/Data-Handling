@@ -1,29 +1,28 @@
-import React, { useState, useEffect } from "react";
-import Style from "../ApiData/ApiData.module.css";
+import React, { useState, useMemo, useEffect } from "react";
+import Style from "../MemoDataFilter/DataFilter.module.css";
 import { ToastContainer, toast, Slide } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Link } from "react-router-dom";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import * as XLSX from "xlsx";
 
-const ApiData = () => {
-  const [originalData, setOriginalData] = useState([]);
+const DataFilter = () => {
   const [myData, setMyData] = useState([]);
-  const [searchUserId, setSearchUserId] = useState("");
-  const [searchTitle, setSearchTitle] = useState("");
-  const [selectedUserId, setSelectedUserId] = useState("");
-  const [noData, setNoData] = useState(true);
-  const [loading, setLoading] = useState(true);
   const [perPage, setPerpage] = useState(10);
   const [currentPage, setcurrentPage] = useState(1);
+  const [searchUserId, setSearchUserId] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [searchTitle, setSearchTitle] = useState("");
+  const [selectedUserId, setSelectedUserId] = useState("");
+  const [originalData, setOriginalData] = useState([]);
   const [searchPage, setSearchPage] = useState("");
+  const [noData, setNoData] = useState(true);
 
   const shouldShowpagination = myData.length > perPage && !noData;
 
-  useEffect(() => {
+  useMemo(() => {
     axios.get("https://jsonplaceholder.typicode.com/posts").then((res) => {
-      setOriginalData(res.data);
       setMyData(res.data);
+      setOriginalData(res.data);
       setNoData(false);
       setTimeout(() => setLoading(false), 500);
     });
@@ -63,7 +62,6 @@ const ApiData = () => {
 
     XLSX.writeFile(workbook, fileName);
   };
-
   //..............Function Export Pagination Data to Excel.........////
 
   const PaginateDataToExcel = () => {
@@ -103,23 +101,23 @@ const ApiData = () => {
     XLSX.writeFile(workbook, fileName);
   };
 
-  //...............Pagination Start.........////
-
+  //.............Pagination Start...........
   const indexLast = currentPage * perPage;
   const indeFpage = indexLast - perPage;
   const currentpostPage = myData.slice(indeFpage, indexLast);
-  console.log("clicked Page Number", currentPage);
 
   const PageNumber = [];
   for (var i = 1; i <= Math.ceil(myData.length / perPage); i++) {
     PageNumber.push(i);
   }
+
+  //...........CurrentPage...............
   const PageShow = (num) => {
     // console.log('Clicked page Number',num)
     setcurrentPage(num);
   };
 
-  // ......................NextPage..................................
+  //   ..........Next Page..........
   const Nextpage = () => {
     const lastpage = Math.ceil(myData.length / perPage);
     if (currentPage < lastpage) {
@@ -133,6 +131,48 @@ const ApiData = () => {
       var count = currentPage - 1;
       setcurrentPage(count);
     }
+  };
+
+  //...............Filter Data With useMemo Hooks.............
+
+  const filteredData = useMemo(() => {
+    let data = originalData;
+
+    if (selectedUserId) {
+      data = data.filter((post) => post.userId.toString() === selectedUserId);
+    }
+
+    if (searchUserId) {
+      data = data.filter((post) =>
+        post.userId.toString().includes(searchUserId.trim())
+      );
+    }
+
+    if (searchTitle) {
+      data = data.filter((post) =>
+        post.title.toLowerCase().includes(searchTitle.trim().toLowerCase())
+      );
+    }
+
+    return data;
+  }, [originalData, searchUserId, searchTitle, selectedUserId]);
+
+  useEffect(() => {
+    setMyData(filteredData);
+    setNoData(filteredData.length === 0);
+    setSearchPage("");
+  }, [filteredData]);
+
+  const handleSearchUserId = (e) => {
+    setSearchUserId(e.target.value.trim());
+  };
+
+  const handleSearchTitle = (e) => {
+    setSearchTitle(e.target.value.trim());
+  };
+
+  const handleSelectUserId = (e) => {
+    setSelectedUserId(e.target.value);
   };
 
   const handleSearch = () => {
@@ -160,38 +200,50 @@ const ApiData = () => {
     setNoData(filteredData.length === 0);
     setSearchPage("");
   };
+  
+  //.............
+  //   const handlPageSearch = (e) => {
+  //     const pageValue = e.target.value.trim();
+  //     setSearchPage(pageValue);
+  //     const page = parseInt(pageValue);
+  //     if (pageValue === "") {
+  //       setNoData(false);
+  //       setcurrentPage(1);
+  //     } else if (
+  //       isNaN(page) ||
+  //       page > Math.ceil(myData.length / perPage) ||
+  //       page <= 0
+  //     ) {
+  //       setNoData(true);
+  //     } else {
+  //       setNoData(false);
+  //       setcurrentPage(page);
+  //     }
+  //   };
+  // ...............
 
-  const handleSearchUserId = (e) => {
-    setSearchUserId(e.target.value.trim());
-  };
 
-  const handleSearchTitle = (e) => {
-    setSearchTitle(e.target.value.trim());
-  };
-
-  const handleSelectUserId = (e) => {
-    setSelectedUserId(e.target.value);
-  };
-
-  const handlPageSearch = (e) => {
-    const pageValue = e.target.value.trim();
-    setSearchPage(pageValue);
-    const page = parseInt(pageValue);
-    if (pageValue === "") {
-      setNoData(false);
-      setcurrentPage(1);
-    } else if (
-      isNaN(page) ||
-      page > Math.ceil(myData.length / perPage) ||
-      page <= 0
-    ) {
-      setNoData(true);
-    } else {
-      setNoData(false);
-      setcurrentPage(page);
-    }
-  };
-
+  const handlPageSearch = useMemo(() => {
+    return (e) => {
+      const pageValue = e.target.value.trim();
+      setSearchPage(pageValue);
+      const page = parseInt(pageValue);
+      if (pageValue === "") {
+        setNoData(false);
+        setcurrentPage(1);
+      } else if (
+        isNaN(page) ||
+        page > Math.ceil(myData.length / perPage) ||
+        page <= 0
+      ) {
+        setNoData(true);
+      } else {
+        setNoData(false);
+        setcurrentPage(page);
+      }
+    };
+  }, [myData, perPage]);
+  //.....................
   const handleReset = () => {
     setSearchTitle("");
     setSearchUserId("");
@@ -201,7 +253,6 @@ const ApiData = () => {
     setMyData(originalData);
     setNoData(false);
   };
-
   useEffect(() => {
     handleSearch();
   }, [searchUserId, searchTitle, selectedUserId]);
@@ -210,7 +261,7 @@ const ApiData = () => {
     <>
       <div className="container">
         <div className={Style.main}>
-          <h1>All Api Data Page</h1>
+          <h1>Fiter Data With useMemo </h1>
         </div>
         <div className={Style.searchBar}>
           <input
@@ -370,4 +421,4 @@ const ApiData = () => {
   );
 };
 
-export default ApiData;
+export default DataFilter;
