@@ -43,7 +43,7 @@ const ApiDetails = () => {
   return (
     <>
  <div className={Style.display1} ref={contentRef}>
-      <img className={Style.img} src="/card1.avif" alt="" srcset="" />
+      <img className={Style.img} src="/card1.avif" alt=""  />
 
       <div className={Style.main}>
         <div className={Style.pdfkBtn} data-html2canvas-ignore="true">

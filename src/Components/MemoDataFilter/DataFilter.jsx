@@ -28,6 +28,38 @@ const DataFilter = () => {
     });
   }, []);
 
+    //.............Pagination Start...........
+    const indexLast = currentPage * perPage;
+    const indeFpage = indexLast - perPage;
+    const currentpostPage = myData.slice(indeFpage, indexLast);
+  
+    const PageNumber = [];
+    for (var i = 1; i <= Math.ceil(myData.length / perPage); i++) {
+      PageNumber.push(i);
+    }
+  
+    //...........CurrentPage...............
+    const PageShow = (num) => {
+      // console.log('Clicked page Number',num)
+      setcurrentPage(num);
+    };
+  
+    //   ..........Next Page..........
+    const Nextpage = () => {
+      const lastpage = Math.ceil(myData.length / perPage);
+      if (currentPage < lastpage) {
+        var count = currentPage + 1;
+        setcurrentPage(count);
+      }
+    };
+    // .......................PrevPage.................................
+    const Prevpage = () => {
+      if (currentPage > 1) {
+        var count = currentPage - 1;
+        setcurrentPage(count);
+      }
+    };
+
   //..............Function Export Post Data to Excel.........////
 
   const exportToExcel = () => {
@@ -101,37 +133,7 @@ const DataFilter = () => {
     XLSX.writeFile(workbook, fileName);
   };
 
-  //.............Pagination Start...........
-  const indexLast = currentPage * perPage;
-  const indeFpage = indexLast - perPage;
-  const currentpostPage = myData.slice(indeFpage, indexLast);
 
-  const PageNumber = [];
-  for (var i = 1; i <= Math.ceil(myData.length / perPage); i++) {
-    PageNumber.push(i);
-  }
-
-  //...........CurrentPage...............
-  const PageShow = (num) => {
-    // console.log('Clicked page Number',num)
-    setcurrentPage(num);
-  };
-
-  //   ..........Next Page..........
-  const Nextpage = () => {
-    const lastpage = Math.ceil(myData.length / perPage);
-    if (currentPage < lastpage) {
-      var count = currentPage + 1;
-      setcurrentPage(count);
-    }
-  };
-  // .......................PrevPage.................................
-  const Prevpage = () => {
-    if (currentPage > 1) {
-      var count = currentPage - 1;
-      setcurrentPage(count);
-    }
-  };
 
   //...............Filter Data With useMemo Hooks.............
 
@@ -152,10 +154,13 @@ const DataFilter = () => {
       data = data.filter((post) =>
         post.title.toLowerCase().includes(searchTitle.trim().toLowerCase())
       );
+      
     }
+   
 
     return data;
   }, [originalData, searchUserId, searchTitle, selectedUserId]);
+  
 
   useEffect(() => {
     setMyData(filteredData);
@@ -194,6 +199,7 @@ const DataFilter = () => {
       filteredData = filteredData.filter((post) =>
         post.title.toLowerCase().includes(searchTitle.trim().toLowerCase())
       );
+     
     }
 
     setMyData(filteredData);
@@ -201,27 +207,6 @@ const DataFilter = () => {
     setSearchPage("");
   };
   
-  //.............
-  //   const handlPageSearch = (e) => {
-  //     const pageValue = e.target.value.trim();
-  //     setSearchPage(pageValue);
-  //     const page = parseInt(pageValue);
-  //     if (pageValue === "") {
-  //       setNoData(false);
-  //       setcurrentPage(1);
-  //     } else if (
-  //       isNaN(page) ||
-  //       page > Math.ceil(myData.length / perPage) ||
-  //       page <= 0
-  //     ) {
-  //       setNoData(true);
-  //     } else {
-  //       setNoData(false);
-  //       setcurrentPage(page);
-  //     }
-  //   };
-  // ...............
-
 
   const handlPageSearch = useMemo(() => {
     return (e) => {

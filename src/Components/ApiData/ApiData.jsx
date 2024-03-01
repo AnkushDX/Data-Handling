@@ -108,7 +108,7 @@ const ApiData = () => {
   const indexLast = currentPage * perPage;
   const indeFpage = indexLast - perPage;
   const currentpostPage = myData.slice(indeFpage, indexLast);
-  console.log("clicked Page Number", currentPage);
+  // console.log("clicked Page Number", currentPage);
 
   const PageNumber = [];
   for (var i = 1; i <= Math.ceil(myData.length / perPage); i++) {
@@ -151,6 +151,7 @@ const ApiData = () => {
     }
 
     if (searchTitle) {
+     
       filteredData = filteredData.filter((post) =>
         post.title.toLowerCase().includes(searchTitle.trim().toLowerCase())
       );
