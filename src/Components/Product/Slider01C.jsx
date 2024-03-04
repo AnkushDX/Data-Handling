@@ -4,21 +4,20 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const Slider01C = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [checked,setChecked]= useState(false)
   const [showInfo, setShowInfo] = useState(false);
 
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
-    setChecked(false)
   };
   const toggleInfo = () => {
     setShowInfo(!showInfo);
   };
- 
+
   return (
     <>
-      <div className={Style.accordion} id="accordionExample">
-        <div className="accordion-item">
+    <div className={Style.slider01C}>
+    <div className={Style.accordion} id="accordionExample">
+        <div className={`accordion-item ${Style.accordianItem}`}>
           <h2 className="accordion-header">
             <span
               className={` collapsed ${Style.accordionButton}`}
@@ -34,8 +33,6 @@ const Slider01C = () => {
                   type="radio"
                   name="flexRadioDefault"
                   id="flexRadioDefault1"
-                  checked={!checked}
-                
                 />
                 <label
                   className={`form-check-label ${Style.radio1}`}
@@ -80,7 +77,7 @@ const Slider01C = () => {
             </div>
           </div>
         </div>
-        <div className="accordion-item">
+        <div  className={`accordion-item ${Style.accordianItem}`}>
           <h2 className="accordion-header">
             <span
               className={Style.accordionButton2}
@@ -90,12 +87,13 @@ const Slider01C = () => {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
+            
               <input
                 className={`form-check-input ${Style.radioIcon2}`}
                 type="radio"
                 name="flexRadioDefault"
                 id="flexRadioDefault2"
-                checked={!checked}
+                checked
               />
               <label
                 className={`form-check-label ${Style.radio1}`}
@@ -110,20 +108,18 @@ const Slider01C = () => {
                 </p>
               </label>
             </span>
-
           </h2>
           <div className={Style.ooferBtn}>
-          <button className={Style.offer2}>Save $11.00</button>{" "}
-              <span >with Subscription</span>
+            <button className={Style.offer2}>Save $11.00</button>{" "}
+            <span>with Subscription</span>
           </div>
-         
+
           <div
             id="collapseOne"
             className="accordion-collapse collapse show"
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-             
               <p className={Style.Ptext}>
                 Don't miss this opportunity to save 20% on this order and all
                 future subscribe and save orders. No Fees Cancel anytime
@@ -132,32 +128,46 @@ const Slider01C = () => {
                 <li>No Fees</li>
                 <li>Cancel anytime</li>
               </ul>
-              <div className={Style.accordion}>
+              <div className={Style.accordion2}>
                 <div className={Style.header} onClick={toggleAccordion}>
                   Learn more{" "}
                   <span
                     className={Style.icon}
-                    style={{
-                      transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
-                    }}
+                   
                   >
                     <IoIosArrowDown />
                   </span>
                 </div>
                 {isOpen && (
                   <div className={Style.content}>
-                  <span>There is no commitment and no minimum to buy. Please note exact shipment times may vary. To customize future shipments and changes, access your account in the Bruno MD portal, or email customer care department at customercare@brunopharma.com.</span>
-                    <p className="text-center">HOW SUBSCRIBE & SAVE WORKS</p>
-                    <img className={Style.infoBtn} src="Images/infoBtn.svg" onClick={toggleInfo}/>
+                    <span>
+                      There is no commitment and no minimum to buy. Please note
+                      exact shipment times may vary. To customize future
+                      shipments and changes, access your account in the Bruno MD
+                      portal, or email customer care department at
+                      customercare@brunopharma.com.
+                    </span>
+                    <p className={`text-center ${Style.subsContent}`}>HOW SUBSCRIBE & SAVE WORKS</p>
+                    <img
+                      className={Style.infoBtn}
+                      src="Images/infoBtn.svg"
+                      onClick={toggleInfo}
+                    />
                     {showInfo && (
                       <ul className={Style.liContent}>
-                      30 days after your first order is shipped, and then approximately every 30 days thereafter, you will be sent a new order of Bluerex. Each shipment will be charged to the payment method you provide today in one payment at the low price of $43.98 plus shipping and handling, unless you cancel via the Bruno MD portal, or by contacting customer care department.
+                        30 days after your first order is shipped, and then
+                        approximately every 30 days thereafter, you will be sent
+                        a new order of Bluerex. Each shipment will be charged to
+                        the payment method you provide today in one payment at
+                        the low price of $43.98 plus shipping and handling,
+                        unless you cancel via the Bruno MD portal, or by
+                        contacting customer care department.
                       </ul>
                     )}
                   </div>
                 )}
               </div>
-              <div className={Style.stocDiv}>
+              <div className={Style.stocDiv2}>
                 <h5 className={Style.stock}>In Stock.</h5>
                 <div className={Style.customSelect}>
                   <select className={Style.selectDiv}>
@@ -198,6 +208,8 @@ const Slider01C = () => {
           </div>
         </div>
       </div>
+    </div>
+      
     </>
   );
 };
