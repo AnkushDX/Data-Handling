@@ -1,0 +1,126 @@
+/* Slider01A.module.css */
+.slider01A {
+    position: relative;
+  }
+  
+  .mainImg1 {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .arrowButtons {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .leftbtn,
+  .Rightbtn {
+    color: black;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .leftbtn:hover,.Rightbtn:hover{
+    height: 326px;
+    background-color: rgba(138, 136, 136, 0.168);
+  }
+
+  .slideImg {
+    width: 80%;
+    margin: 3px;
+    height: auto;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .slideImg:hover {
+    border-color: #000;
+  }
+  
+  .activeSlide .slideImg {
+    border-color: #000;
+  }
+
+
+  @media  (min-width:768px){
+    .slider01A {
+        margin-left: 70px;
+      }
+    .mainImg1{
+        width: 90%;
+    }
+    .arrowButtons {
+        position: absolute;
+        top: 40%;
+        transform: translateY(-50%);
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+      }
+      .slideImg {
+        width: 70%;
+        margin: 3px;
+        height: auto;
+        border: 2px solid transparent;
+        transition: border-color 0.3s ease-in-out;
+      }
+  } 
+
+
+
+ 
+  /* Media Queries */
+  /* @media only screen and (max-width: 2800px) {
+    .slider01A {
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+  
+  @media only screen and (max-width: 1600px) {
+    .slider01A {
+      width: 80%;
+    }
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    .slider01A {
+      width: 70%;
+    }
+  }
+  
+  @media only screen and (max-width: 992px) {
+    .slider01A {
+      width: 60%;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .slider01A {
+      width: 50%;
+    }
+  }
+  
+  @media only screen and (max-width: 576px) {
+    .slider01A {
+      width: 40%;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .slider01A {
+      width: 90%;
+    }
+  }
+  
+  @media only screen and (max-width: 360px) {
+    .slider01A {
+      width: 90%;
+    }
+  } */
