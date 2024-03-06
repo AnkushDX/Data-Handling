@@ -16,17 +16,15 @@ const Slider01A = () => {
     if (savedImg) {
       setMainImg(savedImg);
     }
-    // Clear localStorage when component unmounts
+
     return () => {
       localStorage.removeItem("mainImg");
     };
   }, []);
 
   useEffect(() => {
-    // Add event listener to handle page refresh
     window.addEventListener("beforeunload", clearLocalStorage);
     return () => {
-      // Remove event listener when component unmounts
       window.removeEventListener("beforeunload", clearLocalStorage);
     };
   }, []);
@@ -69,6 +67,9 @@ const Slider01A = () => {
     <div className="container-fluid mt-5">
       <div className="row">
         <div className="col-lg-4 ">
+          <p className={Style.stardiv}>
+            BLUEREX VISION 60 SOFTGELS 30 SERVINGS
+          </p>
           <div className={Style.slider01A}>
             <img className={Style.mainImg1} src={mainImg} />
             <div className={Style.arrowButtons}>
@@ -101,6 +102,7 @@ const Slider01A = () => {
                   <img
                     className={Style.slideImg}
                     src={`Images/bruno${index + 1}.webp`}
+                    alt=""
                   />
                 </div>
               ))}
@@ -108,10 +110,10 @@ const Slider01A = () => {
           </div>
         </div>
         <div className="col-lg-4">
-        <Slider01B />
+          <Slider01B />
         </div>
         <div className="col-lg-4">
-        <Slider01C />
+          <Slider01C />
         </div>
       </div>
     </div>

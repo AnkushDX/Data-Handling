@@ -11,8 +11,14 @@ const Slider01C = () => {
     const activeAccordionState = localStorage.getItem("activeAccordion");
     if (activeAccordionState) {
       setActiveAccordion(activeAccordionState);
+    }else{
+      setActiveAccordion("collapseTwo")
+    }
+    return()=>{
+      localStorage.removeItem("activeAccordion")
     }
   }, []);
+ 
 
   const handleAccordionChange = (accordionId) => {
     setActiveAccordion(accordionId);
@@ -29,7 +35,7 @@ const Slider01C = () => {
 
   return (
     <div className={`accordion ${Style.accordion}`} id="accordionExample">
-      <div className={`accordion-item ${Style.accordionItem1}`}>
+      <div className={`accordion-item ${Style.accordionItem1} ${activeAccordion !== "collapseOne" ? Style.grayBackgorund:""}`}>
         <input
         className={Style.icon1}
           type="radio"
@@ -71,13 +77,13 @@ const Slider01C = () => {
                   </select>
                 </div>
               </div>
-              <div>
+              <div className={Style.cartBtnDiv}>
                 <button className={Style.cartBtn}>Add to Cart</button>
               </div>
           </div>
         </div>
       </div>
-      <div className={`accordion-item ${Style.accordionItem}`}>
+      <div className={`accordion-item ${Style.accordionItem} ${activeAccordion !=="collapseTwo" ? Style.grayBackgorund:""}`}>
         <input
         className={Style.icon1}
           type="radio"
@@ -133,8 +139,10 @@ const Slider01C = () => {
                     <img
                       className={Style.infoBtn}
                       src="Images/infoBtn.svg"
+                      alt
                       onClick={toggleInfo}
-                    /></div>
+                    />
+                    </div>
                     
                     {showInfo && (
                       <ul className={Style.liContent}>
@@ -152,7 +160,7 @@ const Slider01C = () => {
               </div>
               <div className={Style.stocDiv2}>
                 <h6 className={Style.stock2}>In Stock.</h6>
-                <div className={Style.customSelect}>
+                <div className={Style.customSelect2}>
                   <select className={Style.selectDiv}>
                     <option value="1" className={Style.qty}>
                       QTY: 1{" "}
@@ -170,7 +178,7 @@ const Slider01C = () => {
               <div className="mt-2">
                 <strong className={Style.delivery}>Delivery every:</strong>
               </div>
-              <div className={Style.customSelect2}>
+              <div className={Style.customSelect3}>
                 <select className={Style.selectDiv}>
                   <option value="1" className={Style.qty}>
                     30 Days{" "}
@@ -184,7 +192,7 @@ const Slider01C = () => {
                   <option value="Day 3">3</option>
                 </select>
               </div>
-              <div>
+              <div className={Style.subBtnDiv} >
                 <button className={Style.subBtn}>Subscribe</button>
               </div>
           </div>

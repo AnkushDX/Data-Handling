@@ -1,11 +1,17 @@
+
 .accordionHeader {
   font-weight: bold;
-  margin-left: 30px;
+  margin-left: 38px;
+  margin-top: 9px;
+  font-size: 17px;
+}
+.grayBackgorund{
+  background-color: #f4f3f4;
 }
 .icon1 {
-  margin-left: 10px;
+  margin-left: 20px;
   position: absolute;
-  margin-top: 7px !important;
+  margin-top: 15px !important;
 }
 .money {
   font-size: 23px;
@@ -14,10 +20,10 @@
   margin-top: -30px;
 }
 .stock {
-  margin-left: 10px;
+  margin-left: 20px;
   color: #49a344;
   font-weight: 620;
-  font-size: 17px;
+  font-size: 18px;
 }
 .selectDiv {
   margin-left: -30px;
@@ -29,12 +35,15 @@
   border: 0.5px solid gray;
   outline: none;
 }
+.cartBtnDiv {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 .cartBtn {
-    margin-left: 15px;
   margin-top: 20px;
   padding: 6px 40px;
-  width: 350px;
-  /* width: auto; */
+  width: 90%;
   font-size: 20px;
   border-radius: 20px;
   border: none;
@@ -62,7 +71,7 @@
 }
 .Ptext {
   margin-top: -10px;
-  margin-left: 10px;
+  margin-left: 18px;
   font-size: 15px;
 }
 .liText {
@@ -71,7 +80,7 @@
   margin-left: 10px;
 }
 .accordion2 {
-  margin-left: 10px;
+  margin-left: 18px;
   margin-top: -10px;
 }
 .header {
@@ -90,7 +99,7 @@
   margin-left: 310px;
 }
 .liContent {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
   margin-left: -30px;
   font-size: 11px;
   margin-top: -20px;
@@ -99,28 +108,34 @@
   margin-left: 10px;
 }
 .stock2 {
-    margin-top: 0px;
-  margin-left: 0px;
+  margin-top: 0px;
+  margin-left: 10px;
   color: #49a344;
   font-weight: 620;
-  font-size: 17px;
+  font-size: 18px;
 }
 .customSelect {
-  margin-left: -10px;
-}
-.delivery {
   margin-left: 10px;
 }
 .customSelect2 {
-  margin-top: 10px;
   margin-left: 0px;
 }
+.delivery {
+  margin-left: 20px;
+}
+.customSelect3 {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.subBtnDiv {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
 .subBtn {
-    margin-left: 15px;
   margin-top: 20px;
   padding: 6px 40px;
-  width: 350px;
-  /* width: auto; */
+  width: 90%;
   font-size: 20px;
   border-radius: 20px;
   border: none;
@@ -129,71 +144,158 @@
   color: white;
   font-weight: 400;
 }
-@media (max-width: 1300px) {
-    .cartBtn{
-        width: auto;
-    }
-    .subBtn{
-        width: auto;
-    }
+@media (max-width: 1440px) {
+  .infoBtn {
+    margin-left: 320px;
+  }
+}
+@media (max-width: 1024px) {
+  .infoBtn {
+    margin-left: 250px;
+  }
 }
 @media (max-width: 768px) {
+  .accordion {
+    width: 90%;
+    margin-left: 35px;
+  }
+  .icon1 {
+    margin-left: 30px;
+  }
+  .accordionHeader {
+    margin-left: 50px;
+  }
+  .stocDiv {
+    margin-left: 12px;
+  }
+  .Ptext {
+    margin-left: 30px;
+  }
+  .liText {
+    margin-left: 30px;
+  }
+  .accordion2 {
+    margin-left: 30px;
+  }
+  .stocDiv2 {
+    margin-left: 25px;
+  }
+  .delivery {
+    margin-left: 30px;
+  }
+  .customSelect3 {
+    margin-left: 20px;
+  }
+  .subBtnDiv {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
   .subBtn {
-    width: auto;
+    width: 90%;
+  }
+  .cartBtn {
+    width: 90%;
   }
   .infoBtn {
     margin-left: 470px;
   }
 }
 @media (max-width: 425px) {
-    .subsContent {
-        margin-left: -80px;
-        font-size: 16px;
-      }
-      .infoBtn {
-        margin-top: -70px;
-        width: 16px;
-        margin-left: 255px;
-      }
-      .cartBtn{
-        width: auto;
-    }
+  .accordion {
+    width: 90%;
+    margin-left: 20px;
   }
-  @media (max-width: 375px) {
-    .subsContent {
-        margin-left: -60px;
-        font-size: 15px;
-      }
-      .infoBtn {
-        margin-top: -70px;
-        width: 16px;
-        margin-left: 235px;
-      }
-      .cartBtn{
-        width: auto;
-    }
-    .subBtn{
-        width: auto;
-    }
+  .accordionHeader {
+    margin-left: 35px;
   }
-@media (max-width: 320px) {
-    .cartBtn{
-        width: auto;
-        margin-left: 50px;
-        font-size: 16px;
-    }
+  .icon1 {
+    margin-left: 17px;
+  }
+  .stocDiv {
+    margin-left: -5px;
+  }
+  .cartBtn {
+    width: 90%;
+    font-family: var(--bmd-font-Secondary);
+  }
+  .Ptext {
+    margin-left: 15px;
+  }
+  .liText {
+    margin-left: 15px;
+  }
+  .accordion2 {
+    margin-left: 15px;
+  }
+  .stocDiv2 {
+    margin-left: 5px;
+  }
+  .delivery {
+    margin-left: 15px;
+  }
+  .customSelect3 {
+    margin-left: 5px;
+  }
+  .subsContent {
+    margin-left: -80px;
+    font-size: 15px;
+  }
+  .infoBtn {
+    margin-top: -70px;
+    width: 16px;
+    margin-left: 235px;
+  }
+
   .subBtn {
-    margin-left: 50px;
-    width: auto;
+    width: 90%;
+    font-family: var(--bmd-font-Secondary);
+  }
+}
+@media (max-width: 375px) {
+  .subsContent {
+    margin-left: -50px;
+    font-size: 14px;
+  }
+  .infoBtn {
+    margin-top: -70px;
+    width: 16px;
+    margin-left: 215px;
+  }
+  .cartBtn {
+    width: 90%;
+  }
+  .subBtn {
+    width: 90%;
+  }
+}
+@media (max-width: 320px) {
+  .cartBtn {
+    width: 90%;
+    font-size: 16px;
+  }
+  .sub {
+    font-size: 13px;
+  }
+  .subBtn {
+    width: 90%;
     font-size: 16px;
   }
   .subsContent {
-    margin-left: -50px;
-    font-size: 13px;
+    margin-left: -30px;
+    font-size: 12px;
   }
   .infoBtn {
     margin-top: -65px;
     width: 16px;
-    margin-left: 195px;
+    margin-left: 180px;
+  }
+}
+@media (max-width:300px){
+  .accordion{
+    background: #f4f3f4;
+    width: 108.5%;
+    margin-left: -12px;
+    cursor: pointer;
   }
 }
