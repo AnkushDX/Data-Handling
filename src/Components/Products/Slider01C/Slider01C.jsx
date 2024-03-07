@@ -101,7 +101,7 @@ const Slider01C = () => {
                   <sup className={Style.doloor}>$</sup>
                   <span className={Style.money}>43</span>
                   <sup className={Style.degree}>98</sup>
-                  <span className={Style.offer}>$54.98</span>
+                  <span className={Style.offer}> $54.98</span>
                 </p>
                 <div className={Style.ooferBtn}>
             <button className={Style.offer2}>Save $11.00</button>{" "}

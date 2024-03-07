@@ -1,113 +1,75 @@
 import React, { useEffect, useState, useRef } from "react";
 import Style from "../Slider01A/Slider01A.module.css";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+// import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Slider01B from "../Slider01B/Slider01B";
 import Slider01C from "../Slider01C/Slider01C";
 
 const Slider01A = () => {
-  const carouselRef = useRef(null);
-  const [mainImg, setMainImg] = useState("Images/bruno1.webp");
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const savedImg = localStorage.getItem("mainImg");
-    if (savedImg) {
-      setMainImg(savedImg);
-    }
-
-    return () => {
-      localStorage.removeItem("mainImg");
-    };
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("beforeunload", clearLocalStorage);
-    return () => {
-      window.removeEventListener("beforeunload", clearLocalStorage);
-    };
-  }, []);
-
-  const clearLocalStorage = () => {
-    localStorage.removeItem("mainImg");
+  const onChange = (index) => {
+    console.log(`Carousel slide changed to index ${index}`);
   };
 
-  const handleImgClick = (imageSrc, index) => {
-    setMainImg(imageSrc);
-    localStorage.setItem("mainImg", imageSrc);
-    setActiveIndex(index);
-  };
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1023 },
-      items: 4,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 768 },
-      items: 3,
-    },
-    mobile: {
-      breakpoint: { max: 768, min: 0 },
-      items: 3,
-    },
-  };
-  const goToPrevSlide = () => {
-    if (carouselRef.current) {
-      carouselRef.current.previous();
-    }
+  const onClickItem = (index, item) => {
+    console.log(`Clicked on item ${index}: `, item);
   };
 
-  const goToNextSlide = () => {
-    if (carouselRef.current) {
-      carouselRef.current.next();
-    }
+  const onClickThumb = (index) => {
+    console.log(`Clicked on thumbnail ${index}`);
   };
   return (
-    <div className="container-fluid mt-5">
+    <div className="container-fluid mt-5 ">
       <div className="row">
         <div className="col-lg-4 ">
           <p className={Style.stardiv}>
             BLUEREX VISION 60 SOFTGELS 30 SERVINGS
           </p>
-          <div className={Style.slider01A}>
-            <img className={Style.mainImg1} src={mainImg} />
-            <div className={Style.arrowButtons}>
-              <button className={Style.leftbtn} onClick={goToPrevSlide}>
-                <FaChevronLeft />
-              </button>
-              <button className={Style.Rightbtn} onClick={goToNextSlide}>
-                <FaChevronRight />
-              </button>
-            </div>
-            <Carousel
-              ref={carouselRef}
-              responsive={responsive}
-              infinite={true}
-              arrows={false}
-              autoPlay={true}
-              customTransition="transform 500ms ease-in-out"
-              afterChange={(previousSlide, { currentSlide }) =>
-                setActiveIndex(currentSlide)
-              }
-            >
-              {Array.from(Array(9).keys()).map((index) => (
-                <div
-                  key={index}
-                  onClick={() =>
-                    handleImgClick(`Images/bruno${index + 1}.webp`, index)
-                  }
-                  className={index === activeIndex ? Style.activeSlide : ""}
-                >
-                  <img
-                    className={Style.slideImg}
-                    src={`Images/bruno${index + 1}.webp`}
-                    alt=""
-                  />
-                </div>
-              ))}
-            </Carousel>
-          </div>
+          <Carousel 
+    showArrows={true} 
+    showStatus={false}
+    showIndicators={false}
+    onChange={onChange} 
+    onClickItem={onClickItem} 
+    onClickThumb={onClickThumb}
+>
+    <div>
+        <img src="Images/bruno1.webp" alt="Slide 1" />
+       
+    </div>
+    <div>
+    <img src="Images/bruno2.webp" alt="Slide 1" />
+     
+    </div>
+    <div>
+    <img src="Images/bruno3.webp" alt="Slide 1" />
+    
+    </div>
+    <div>
+    <img src="Images/bruno4.webp" alt="Slide 1" />
+        
+    </div>
+    <div>
+    <img src="Images/bruno5.webp" alt="Slide 1" />
+       
+    </div>
+    <div>
+    <img src="Images/bruno6.webp" alt="Slide 1" />
+       
+    </div>
+    <div>
+    <img src="Images/bruno7.webp" alt="Slide 1" />
+       
+    </div>
+    <div>
+    <img src="Images/bruno8.webp" alt="Slide 1" />
+       
+    </div>
+    <div>
+    <img src="Images/bruno9.webp" alt="Slide 1" />
+       
+    </div>
+</Carousel>
         </div>
         <div className="col-lg-4">
           <Slider01B />
