@@ -93,21 +93,22 @@ text-decoration: line-through;
   color: rgb(0, 167, 225);
 }
 .content {
-  font-size: 9px;
+  font-size: 11px;
   margin-top: 10px;
 }
 .subsContent {
+  margin-left: -120px;
   margin-top: 10px;
   font-size: 16px;
 }
 .infoBtn {
   margin-top: -70px;
-  margin-left: 310px;
+  margin-left: 270px;
 }
 .liContent {
   margin-bottom: 25px;
   margin-left: -30px;
-  font-size: 11px;
+  font-size: 9px;
   margin-top: -20px;
 }
 .stocDiv2 {
@@ -150,13 +151,16 @@ text-decoration: line-through;
   color: white;
   font-weight: 400;
 }
-@media (max-width: 1440px) {
+
+
+
+@media (max-width: 1441px) {
   .infoBtn {
-    margin-left: 320px;
+    margin-left: 270px;
   }
   @media only screen and (max-width:2800px) and (min-width:1441px){
     .infoBtn{
-      margin-left: 335px;
+      margin-left: 300px;
     }
   }
 }
@@ -212,8 +216,12 @@ text-decoration: line-through;
   .cartBtn {
     width: 90%;
   }
+  .subsContent{
+    margin-left: -350px;
+  }
   .infoBtn {
-    margin-left: 470px;
+    margin-top: -75px;
+    margin-left: 250px;
   }
 }
 @media (max-width: 425px) {
@@ -253,13 +261,13 @@ text-decoration: line-through;
     margin-left: 5px;
   }
   .subsContent {
-    margin-left: -120px;
+    margin-left: -140px;
     font-size: 15px;
   }
   .infoBtn {
-    margin-top: -70px;
+    margin-top: -73px;
     width: 16px;
-    margin-left: 240px;
+    margin-left: 230px;
   }
 
   .subBtn {

@@ -6,13 +6,13 @@
   margin-top: -20px;
   /* margin-top: 30px; */
   font-weight: 500;
-  font-size: 45px;
+  font-size: 44px;
   font-family: "Times New Roman", Times, serif;
 }
 .reviewDiv {
   margin-top: -5px;
 }
-.textarea{
+.textarea {
   line-height: 1.2;
   margin-top: 25px;
 }
@@ -28,9 +28,8 @@
 }
 
 
-
-@media only screen and (max-width:2800px) and (min-width:1441px){
-  .stardiv{
+@media only screen and (max-width: 2800px) and (min-width: 1441px) {
+  .stardiv {
     font-size: 44px;
   }
 }
@@ -45,19 +44,15 @@
   .reviewDiv {
     margin-left: 20px;
     width: 90%;
-   
   }
   .stardiv {
     display: none;
-  
   }
   .textarea {
     margin-top: 40px;
     width: 100%;
     margin-left: 20px;
-    
   }
-  
 }
 @media (max-width: 425px) {
   .slider01B {
@@ -74,13 +69,13 @@
     line-height: 1.2;
     width: 100%;
   }
-  .reviewDiv{
-   margin-top: 40px;
+  .reviewDiv {
+    margin-top: 40px;
   }
 }
 @media (max-width: 375px) {
-  .reviewDiv{
-    margin-top: -20px;
+  .reviewDiv {
+    margin-top: 0px;
     margin-left: 25px;
     width: 90%;
   }
@@ -88,7 +83,7 @@
     margin-top: 20px;
     font-size: 26px;
   }
-  .textarea{
+  .textarea {
     margin-left: 25px;
     margin-top: 40px;
     line-height: 1.1;
@@ -104,15 +99,13 @@
   }
 }
 @media (max-width: 300px) {
- .reviewDiv{
-  margin-top: 40px;
- }
- .textarea{
-  color: var(--bmd-black);
-  font-family: var(--bmd-font-Secondary);
-  font-size: 14px;
-  line-height: 16.3px;
-  
- }
- 
+  .reviewDiv {
+    margin-top: 40px;
+  }
+  .textarea {
+    color: var(--bmd-black);
+    font-family: var(--bmd-font-Secondary);
+    font-size: 14px;
+    line-height: 16.3px;
+  }
 }
