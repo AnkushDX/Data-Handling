@@ -154,8 +154,16 @@ text-decoration: line-through;
   .infoBtn {
     margin-left: 320px;
   }
+  @media only screen and (max-width:2800px) and (min-width:1441px){
+    .infoBtn{
+      margin-left: 335px;
+    }
+  }
 }
 @media (max-width: 1024px) {
+  .subsContent{
+    margin-left: -10px;
+  }
   .infoBtn {
     margin-left: 250px;
   }
@@ -210,8 +218,8 @@ text-decoration: line-through;
 }
 @media (max-width: 425px) {
   .accordion {
-    margin-left: 0px;
-    width: 100%;
+    margin-left: -12px;
+    width: 106%;
   }
   .accordionHeader {
     margin-left: 35px;
@@ -251,7 +259,7 @@ text-decoration: line-through;
   .infoBtn {
     margin-top: -70px;
     width: 16px;
-    margin-left: 235px;
+    margin-left: 240px;
   }
 
   .subBtn {
@@ -264,6 +272,9 @@ text-decoration: line-through;
     margin-top: 40px;
     width: 106.7%;
     margin-left: -12px;
+  }
+  .accordion2{
+    margin-left: 15px;
   }
   .subsContent {
     margin-left: -110px;
@@ -284,7 +295,7 @@ text-decoration: line-through;
 @media (max-width: 320px) {
   .accordion{
     margin-top: 25px;
-    width: 107.8%;
+    width: 108%;
     margin-left: -12px;
   }
   .cartBtn {
@@ -309,6 +320,9 @@ text-decoration: line-through;
   }
   .liContent{
     margin-left: -33px;
+  }
+  .accordion2{
+    margin-left: 15px;
   }
 }
 @media (max-width:300px){
