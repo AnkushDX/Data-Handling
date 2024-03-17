@@ -43,7 +43,7 @@
 .productText {
     margin-top: 14px;
     line-height: 1.3;
-    padding: 0.3rem 0;
+    padding: 0.3rem 0.6rem;
 }
 
 .iconStar {
@@ -71,22 +71,23 @@
 .buybtn:hover {
     background-color: rgb(55, 36, 107);
 }
-@media only screen and (max-width: 1024px) {
-    .colactionCart {
-        max-width: 31.%; /* Adjust as needed */
+
+
+/* Responsive Start */
+@media only screen and (max-width:1440px){
+    .colactionCart{
+        max-width: 23%;
     }
 }
-
-/* Responsive styles */
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width:998px) {
     .colactionCart {
-        max-width: 31%; /* Adjust as needed */
+        max-width: 31%; 
     }
 }
 
 @media only screen and (max-width: 576px) {
     .colactionCart {
-        padding: 2rem 0.5rem; /* Adjust padding for smaller devices */
+        padding: 2rem 0.5rem; 
     }
     .imgWrapper {
         height: 150px;
@@ -111,6 +112,7 @@
 }
 @media only screen and (min-width: 320px)and (max-width:475px) {
     .colactionCart {
-        max-width: 100%; /* Adjust as needed */
+        max-width: 100%; 
+        height: 320px;
     }
 }
