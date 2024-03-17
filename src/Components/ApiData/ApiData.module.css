@@ -9,12 +9,15 @@
 }
 .thborder{
     color: rgb(0, 1, 1);
+    background: linear-gradient(180deg, #fff, #eee);
+    flex-direction: column;
    
 }
 .searchBar{
+    
     margin-top: 30px;
     margin-bottom: 20px;
-    margin-left: 21%;
+    /* margin-left: 21%; */
 }
 .sTitle{
     padding: 2px;
